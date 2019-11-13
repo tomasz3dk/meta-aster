@@ -1,0 +1,4 @@
+*.autosave
+debug
+release
+.vscode

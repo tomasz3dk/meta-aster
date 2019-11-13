@@ -1,0 +1,61 @@
+- name: Prepare yocto layers
+  strategy: free
+  hosts: localhost
+  vars:
+    base_dir: "{{ dir | default('$HOME/yocto') }}"
+    release: "{{ yocto_release | default('zeus') }}"
+    machine: "{{ board | default('raspberrypi3') }}"
+  tasks:
+    - name: "Clone poky"
+      git:
+        repo: git://git.yoctoproject.org/poky.git
+        dest: "{{ base_dir }}/poky"
+        version: "{{ release }}"
+        accept_hostkey: yes
+    
+    - name: "Clone meta-openembedded layer"
+      git:
+        repo: git://git.openembedded.org/meta-openembedded
+        dest: "{{ base_dir }}/poky/meta-openembedded/"
+        version: "{{ release }}"
+        accept_hostkey: yes
+    
+    - name: "Clone meta-qt5 layer"
+      git:
+        repo: https://github.com/meta-qt5/meta-qt5
+        dest: "{{ base_dir }}/poky/meta-qt5/"
+        version: "{{ release }}"
+        accept_hostkey: yes
+
+    - name: "Clone meta-raspberrypi layer"
+      git:
+        repo: git://git.yoctoproject.org/meta-raspberrypi.git
+        dest: "{{ base_dir }}/poky/meta-raspberrypi/"
+        version: "master"
+        accept_hostkey: yes
+      
+    - name: "Clone meta-aster layer"
+      git:
+        repo: https://github.com/tomasz3dk/meta-aster.git
+        dest: "{{ base_dir }}/poky/meta-aster/"
+        version: "{{ release }}"
+        force: yes
+        accept_hostkey: yes
+
+    - name: "Create machine directory with conf directory"
+      file:
+        path: "{{ base_dir }}/{{ machine }}_{{ release }}/conf"
+        state: directory
+        mode: '755'
+
+    - name: "Copy local.conf file"
+      copy:
+        src: "{{ base_dir }}/poky/meta-aster/examples/localconf/{{ machine }}_local.conf"
+        dest: "{{ base_dir }}/{{ machine }}_{{ release }}/conf/local.conf"
+        remote_src: true
+
+    - name: "Copy bblayers.conf file"
+      copy:
+        src: "{{ base_dir }}/poky/meta-aster/examples/bblayers/{{ machine }}_bblayers.conf"
+        dest: "{{ base_dir }}/{{ machine }}_{{ release }}/conf/bblayers.conf"
+        remote_src: true
