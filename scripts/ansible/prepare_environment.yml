@@ -1,6 +1,7 @@
 - name: Prepare yocto layers
   strategy: free
   hosts: localhost
+  connection: local
   vars:
     base_dir: "{{ dir | default('$HOME/yocto') }}"
     release: "{{ yocto_release | default('zeus') }}"
