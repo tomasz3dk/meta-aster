@@ -44,25 +44,17 @@ EXTRA_TOOLS = " \
 NETWORK_TOOLS = " \
     ntp \
     ntp-tickadj \
-    tcpdump \
     wget \
-    netcat \
-    iperf3 \
     iproute2 \
     iptables \
-    ethtool \
     tcpdump \
     dbus \
 "
 
 EXTRA_SERVICES = " \
     bluez5 \
-    neard \
     canutils \
     mosquitto \
-    vsftpd \
-    openldap \
-    krb5 \
 "
 
 EXTRA_LIBS = " \
@@ -73,7 +65,7 @@ EXTRA_LIBS = " \
     libusb1 \
     qmqtt \
     libgpiod \
-    prometheus-cpp \
+    influxdb-cxx \
 "
 FONTS = " \
     fontconfig \
