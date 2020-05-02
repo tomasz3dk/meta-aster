@@ -4,7 +4,7 @@
   connection: local
   vars:
     base_dir: "{{ dir | default('$HOME/yocto') }}"
-    release: "{{ yocto_release | default('zeus') }}"
+    release: "{{ yocto_release | default('dunfell') }}"
     machine: "{{ board | default('raspberrypi3') }}"
   tasks:
     - name: "Clone poky"

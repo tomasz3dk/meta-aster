@@ -17,17 +17,14 @@ RDEPENDS_${PN}_append = " \
 	qmqtt-mkspecs \
 "
 RDEPENDS_${PN}_raspberrypi3_append = " \
-	qtwebengine-dev \
-	qtwebengine-mkspecs \
-	qtwebengine-qmlplugins \
 	qtdatavis3d-dev \
 	qtdatavis3d-mkspecs \
 "
-RDEPENDS_${PN}_raspberrypi2_append = " \
-	qtwebengine-dev \
-	qtwebengine-mkspecs \
-	qtwebengine-qmlplugins \
-"
+#RDEPENDS_${PN}_raspberrypi3_append = " \
+#	qtwebengine-dev \
+#	qtwebengine-mkspecs \
+#	qtwebengine-qmlplugins \
+#"
 
 RDEPENDS_${PN}_remove = " \
 	qtwebkit-dev \

@@ -146,10 +146,7 @@ IMAGE_INSTALL += " \
     ${QT_PKGS} \
     ${EXTRA_LIBS} \
     ${GST_PKGS} \
-    ${@bb.utils.contains('MACHINE', 'raspberrypi', '${GST_RPI}', '', d)} \
-    ${@bb.utils.contains('MACHINE', 'raspberrypi3', '${QT_WEBENGINE} ${GST_RPI}', '', d)} \
-    ${@bb.utils.contains('MACHINE', 'raspberrypi2', '${QT_WEBENGINE} ${GST_RPI}', '', d)} \
-    ${@bb.utils.contains('MACHINE', 'raspberrypi3', '${QT_EXTRAS}', '', d)} \
+    ${@bb.utils.contains('MACHINE', 'raspberrypi3', '${QT_EXTRAS} ${GST_RPI}', '', d)} \
     ${@bb.utils.contains('ADD_EXTRA_SERVICES', '1', '${EXTRA_SERVICES}', '', d)} \
 "
 
