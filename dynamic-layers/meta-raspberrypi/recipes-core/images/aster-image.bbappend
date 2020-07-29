@@ -1,4 +1,4 @@
-DEPENDS += "bcm2835-bootfiles"
+DEPENDS += "bootfiles"
 
 IMAGE_INSTALL += " \
     qt5-env \
